@@ -1,4 +1,4 @@
-package com.ustc.leetcode;
+package com.ustc.leetcode.datastrcture.linkedlist;
 
 import com.ustc.common.ListNode;
 import com.ustc.common.ListNodeUtil;

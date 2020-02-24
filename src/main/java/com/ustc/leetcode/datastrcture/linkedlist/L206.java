@@ -1,8 +1,12 @@
-package com.ustc.leetcode;
+package com.ustc.leetcode.datastrcture.linkedlist;
 
 import com.ustc.common.ListNode;
 import com.ustc.common.ListNodeUtil;
 
+/**
+ * 206. 反转链表
+ * https://leetcode-cn.com/problems/reverse-linked-list/description/
+ */
 public class L206 {
     public static void main(String[] args) {
 
