@@ -27,6 +27,7 @@ public class L225 {
         System.out.println(l225.pop());
         System.out.println(l225.pop());
     }
+ 
     @Test
     public  void test2() {
         L225 l225 = new L225();
