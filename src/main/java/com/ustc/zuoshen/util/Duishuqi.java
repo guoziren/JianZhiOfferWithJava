@@ -13,6 +13,26 @@ public class Duishuqi {
         }
         return arr;
     }
+    //实现一个随机样本产生器：随机生成一个[0,maxSize范围]任意]长度，值（范围[0,maxValue-1]）任意的数组
+    public static int[] generateRandomNonNegativeArray(int maxSize,int maxValue){
+        //生成随机数组
+        int size = (int)((maxSize + 1) * Math.random());
+        int[] arr = new int[size];
+        for (int i = 0; i < size; i++) {
+            arr[i] = (int)((maxValue ) * Math.random());
+        }
+        return arr;
+    }
+    //实现一个随机样本产生器：随机生成一个[0,maxSize范围]任意]长度，值（范围[a-z]）任意的小写字母数组
+    public static char[] generateRandomLetterArray(int maxSize){
+        //生成随机数组
+        int size = (int)((maxSize + 1) * Math.random());
+        char[] arr = new char[size];
+        for (int i = 0; i < size; i++) {
+            arr[i] = (char)('a' + (int)(26 * Math.random()));
+        }
+        return arr;
+    }
     public static void AbsoluteRightSort(int[] arr){
         Arrays.sort(arr);
     }

@@ -1,8 +1,12 @@
-package com.ustc.zuoshen.day04;
+package day04;
 
 
-import com.ustc.common.BinaryTreeNode;
+import com.ustc.common.TreeNode;
+import com.ustc.zuoshen.day04.BinaryTree;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class BinaryTreeTest {
     @Test
@@ -11,7 +15,7 @@ public class BinaryTreeTest {
         int inorder[] = {4,7,2,1,5,3,8,6};
         int len = preorder.length;
         BinaryTree tree = new BinaryTree();
-        BinaryTreeNode root = tree.construct(preorder,inorder,len);
+        TreeNode root = tree.construct(preorder,inorder,len);
         System.out.println("递归:");
         tree.preTraverse(root);
         System.out.println("");
@@ -30,7 +34,7 @@ public class BinaryTreeTest {
         int len = preorder.length;
         System.out.println(len);
         BinaryTree tree = new BinaryTree();
-        BinaryTreeNode root = tree.construct(preorder,inorder,len);
+        TreeNode root = tree.construct(preorder,inorder,len);
         int num = tree.nodeNum(root);
         System.out.println(num);
     }
@@ -41,7 +45,7 @@ public class BinaryTreeTest {
         int len = preorder.length;
         System.out.println(len);
         BinaryTree tree = new BinaryTree();
-        BinaryTreeNode root = tree.construct(preorder,inorder,len);
+        TreeNode root = tree.construct(preorder,inorder,len);
         int num = tree.nodeNum(root);
         System.out.println(num);
     }
@@ -52,7 +56,7 @@ public class BinaryTreeTest {
         int len = preorder.length;
         System.out.println(len);
         BinaryTree tree = new BinaryTree();
-        BinaryTreeNode root = tree.construct(preorder,inorder,len);
+        TreeNode root = tree.construct(preorder,inorder,len);
         int num = tree.nodeNum(root);
         System.out.println(num);
     }
@@ -64,7 +68,7 @@ public class BinaryTreeTest {
         int len = preorder.length;
         System.out.println(len);
         BinaryTree tree = new BinaryTree();
-        BinaryTreeNode root = tree.construct(preorder,inorder,len);
+        TreeNode root = tree.construct(preorder,inorder,len);
         boolean isSearchBinaryTree = tree.isSearchBinaryTree(root);
         tree.inTraverse(root);
         System.out.println("");
@@ -77,10 +81,16 @@ public class BinaryTreeTest {
         int len = preorder.length;
         System.out.println(len);
         BinaryTree tree = new BinaryTree();
-        BinaryTreeNode root = tree.construct(preorder,inorder,len);
+        TreeNode root = tree.construct(preorder,inorder,len);
         boolean isSearchBinaryTree = tree.isSearchBinaryTree(root);
         tree.inTraverse(root);
         System.out.println("");
         System.out.println("isSearchBinaryTree=" + isSearchBinaryTree);
+
+    }
+    @Test
+    public void test7(){
+
+
     }
 }

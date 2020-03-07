@@ -1,6 +1,6 @@
 package com.ustc.zuoshen.day04;
 
-import com.ustc.common.BinaryTreeNode;
+import com.ustc.common.TreeNode;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -16,21 +16,21 @@ import java.util.Stack;
 public class BinaryTree {
 
     //非递归先序遍历
-    public void preOrderUnCur(BinaryTreeNode root){
+    public void preOrderUnCur(TreeNode root){
         if (root == null){
             System.out.println("这是个空树");
             return;
         }
-        Stack<BinaryTreeNode> stack = new Stack<>();
+        Stack<TreeNode> stack = new Stack<>();
         stack.push(root);
         while (!stack.isEmpty()){
-            BinaryTreeNode node = stack.pop();
+            TreeNode node = stack.pop();
             System.out.print(node.val + " ");
-            if (node.rightChild != null){
-                stack.push(node.rightChild);
+            if (node.right != null){
+                stack.push(node.right);
             }
-            if (node.leftChild != null){
-                stack.push(node.leftChild);
+            if (node.left != null){
+                stack.push(node.left);
             }
         }
         System.out.println("");
@@ -44,47 +44,47 @@ public class BinaryTree {
      * 当前结点不空，当前结点入栈，当前结点并指向左孩子‘
      * @param root 树根
      */
-    public void inOrderUnCur(BinaryTreeNode root){
+    public void inOrderUnCur(TreeNode root){
         if (root == null){
             System.out.println("这是个空树");
             return;
         }
-        Stack<BinaryTreeNode> stack = new Stack<>();
-        BinaryTreeNode p = root;
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode p = root;
         while (!stack.isEmpty() || p != null){
             if(p != null){
                 stack.push(p);
-                p = p.leftChild;
+                p = p.left;
             }else{
                 p = stack.pop();
                 System.out.print(p.val + " ");
-                p = p.rightChild;
+                p = p.right;
             }
         }
         System.out.println("");
     }
     //非递归后序遍历(实现输出左右中的顺序)
-    public void postOrderUnCur(BinaryTreeNode root){
+    public void postOrderUnCur(TreeNode root){
         if (root == null){
             System.out.println("这是个空树");
             return;
         }
-        Stack<BinaryTreeNode> stack = new Stack<>();
-        Stack<BinaryTreeNode> helpStack = new Stack<>();
+        Stack<TreeNode> stack = new Stack<>();
+        Stack<TreeNode> helpStack = new Stack<>();
         stack.push(root);
         while (!stack.isEmpty()){
-            BinaryTreeNode node = stack.pop();
+            TreeNode node = stack.pop();
             helpStack.push(node);
-            if (node.leftChild != null){
-                stack.push(node.leftChild);
+            if (node.left != null){
+                stack.push(node.left);
             }
-            if (node.rightChild != null){
-                stack.push(node.rightChild);
+            if (node.right != null){
+                stack.push(node.right);
             }
 
         }
         while (!helpStack.isEmpty()){
-            BinaryTreeNode node = helpStack.pop();
+            TreeNode node = helpStack.pop();
             System.out.print(node.val + " ");
         }
         System.out.println();
@@ -98,17 +98,17 @@ public class BinaryTree {
      * @param length
      * @return
      */
-    public  BinaryTreeNode construct(int[] preorder, int[] inorder, int length){
+    public TreeNode construct(int[] preorder, int[] inorder, int length){
         if (preorder == null || inorder == null || length <= 0){
             return null;
         }
 
         return constructCore(preorder,inorder,0, length - 1,0,length - 1);
     }
-    public  BinaryTreeNode constructCore(int[] preorder, int[] inorder,int startPreorder, int endPreorder, int startInorder, int endInorder){
+    public TreeNode constructCore(int[] preorder, int[] inorder, int startPreorder, int endPreorder, int startInorder, int endInorder){
         int rootValue = preorder[startPreorder];
-        BinaryTreeNode root = new BinaryTreeNode(rootValue);
-        root.leftChild = root.rightChild = null;
+        TreeNode root = new TreeNode(rootValue);
+        root.left = root.right = null;
 
         //在中序遍历序列中找到根节点的位置
         int rootInorder = startInorder;
@@ -120,12 +120,12 @@ public class BinaryTree {
         int leftPreorderEnd = startPreorder + leftLength;
         if (leftLength > 0){
             //构建左子树
-            root.leftChild = constructCore(preorder,inorder,startPreorder + 1,leftPreorderEnd,
+            root.left = constructCore(preorder,inorder,startPreorder + 1,leftPreorderEnd,
                     startInorder,rootInorder - 1);
         }
         if (leftLength < endPreorder - startPreorder){
             //构建右子树
-            root.rightChild = constructCore(preorder,inorder,leftPreorderEnd + 1,endPreorder,
+            root.right = constructCore(preorder,inorder,leftPreorderEnd + 1,endPreorder,
                     rootInorder + 1,endInorder);
         }
         return root;
@@ -136,36 +136,36 @@ public class BinaryTree {
      * 递归中序遍历
      * @param root
      */
-    public void inTraverse(BinaryTreeNode root){
+    public void inTraverse(TreeNode root){
         if (root == null){
             return;
         }
-        inTraverse(root.leftChild);
+        inTraverse(root.left);
         System.out.print(root.val + " ");
-        inTraverse(root.rightChild);
+        inTraverse(root.right);
     }
     /**
      * 递归先序遍历
      * @param root
      */
-    public void preTraverse(BinaryTreeNode root){
+    public void preTraverse(TreeNode root){
         if (root == null){
             return;
         }
         System.out.print(root.val + " ");
-        preTraverse(root.leftChild);
-        preTraverse(root.rightChild);
+        preTraverse(root.left);
+        preTraverse(root.right);
     }
     /**
      * 递归后序遍历
      * @param root
      */
-    public void postTraverse(BinaryTreeNode root){
+    public void postTraverse(TreeNode root){
         if (root == null){
             return;
         }
-        preTraverse(root.leftChild);
-        preTraverse(root.rightChild);
+        preTraverse(root.left);
+        preTraverse(root.right);
         System.out.print(root.val + " ");
     }
     /**
@@ -173,15 +173,15 @@ public class BinaryTree {
      * @param root
      * @return
      */
-    public boolean isAVLBinaryTree(BinaryTreeNode root) {
+    public boolean isAVLBinaryTree(TreeNode root) {
         return process(root).isAvl;
     }
-    public AVLReturnData process(BinaryTreeNode root){
+    public AVLReturnData process(TreeNode root){
         if (root == null){
             return new AVLReturnData(true,0);
         }
-        AVLReturnData l = process(root.leftChild);
-        AVLReturnData r = process(root.rightChild);
+        AVLReturnData l = process(root.left);
+        AVLReturnData r = process(root.right);
         if (!l.isAvl ){
             return new AVLReturnData(false,0);
         }
@@ -208,18 +208,18 @@ public class BinaryTree {
      * @param root
      * @return
      */
-    public boolean isSearchBinaryTree(BinaryTreeNode root) {
+    public boolean isSearchBinaryTree(TreeNode root) {
         if (root == null){
             System.out.println("这是个空树");
             return true;
         }
-        Stack<BinaryTreeNode> stack = new Stack<>();
-        BinaryTreeNode p = root;
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode p = root;
         int pre = Integer.MIN_VALUE;
         while (!stack.isEmpty() || p != null){
             if(p != null){
                 stack.push(p);
-                p = p.leftChild;
+                p = p.left;
             }else{
                 p = stack.pop();
                 if (p.val < pre){
@@ -227,7 +227,7 @@ public class BinaryTree {
                 }
                 pre = p.val;
               //  System.out.print(p.val + " ");
-                p = p.rightChild;
+                p = p.right;
             }
         }
         return true;
@@ -238,19 +238,19 @@ public class BinaryTree {
      * @param root
      * @return
      */
-    public boolean isFullBinaryTree(BinaryTreeNode root){
+    public boolean isFullBinaryTree(TreeNode root){
         if (root == null){
             return true;
         }
-        Queue<BinaryTreeNode> queue = new LinkedList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
-        BinaryTreeNode leftChild = null;
-        BinaryTreeNode rightChild = null;
+        TreeNode leftChild = null;
+        TreeNode rightChild = null;
         boolean leaf = false;
         while (!queue.isEmpty()){
-            BinaryTreeNode node = queue.poll();
-            rightChild = node.rightChild;
-            leftChild = node.leftChild;
+            TreeNode node = queue.poll();
+            rightChild = node.right;
+            leftChild = node.left;
             if (leftChild == null && rightChild != null){
                 return false;
             }
@@ -277,27 +277,27 @@ public class BinaryTree {
      * @param root 完全二叉树的树根
      * @return 该树的节点个数
      */
-    public int nodeNum(BinaryTreeNode root){
+    public int nodeNum(TreeNode root){
         if (root == null){
             return 0;
         }
         return bs(root,getFBTHeight(root));
     }
     /*以root为根，高度为height的完全二叉树的结点数*/
-    private int bs(BinaryTreeNode root, int height) {
+    private int bs(TreeNode root, int height) {
         if (root == null){
             return 0;
         }
-        if (getFBTHeight(root.rightChild) == height - 1){
+        if (getFBTHeight(root.right) == height - 1){
             //左子树满
             int num1 = 1 << (height - 1);
-            int num2 = bs(root.rightChild,height - 1);
+            int num2 = bs(root.right,height - 1);
 //            return 1 << (height - 1) + bs(root.rightChild,height - 1);
             return num1 + num2;
         }else{
             //右子树满
             int num3 = 1 << (height - 2);
-            int num4 = bs(root.leftChild,height - 1);
+            int num4 = bs(root.left,height - 1);
 //            return 1 << (height - 2) + bs(root.leftChild,height - 1);
             return num3 + num4;
         }
@@ -308,29 +308,29 @@ public class BinaryTree {
      *  时间复杂度O(logn) * O(logn * @param root 树根
      * @return 完全二叉树的高度
      */
-    private int getFBTHeight(BinaryTreeNode root){
+    private int getFBTHeight(TreeNode root){
         if (root == null){
             return 0;
         }
         int h = 1;
-        while (root.leftChild != null){
-            root = root.leftChild;
+        while (root.left != null){
+            root = root.left;
             h++;
         }
         return h;
     }
     //二叉树的序列化【先序】
-    public String serialByPre(BinaryTreeNode root){
+    public String serialByPre(TreeNode root){
         if (root == null){
             return "#!";
         }
         String res = root.val + "!";
-        res+= serialByPre(root.leftChild);
-        res+= serialByPre(root.rightChild);
+        res+= serialByPre(root.left);
+        res+= serialByPre(root.right);
         return res;
     }
     //二叉树的反序列化【先序】
-    public BinaryTreeNode reconByPreString(String preStr){
+    public TreeNode reconByPreString(String preStr){
         String[] values = preStr.split("!");
         Queue<String> queue = new LinkedList<String>();
         for (int i = 0; i < values.length; i++) {
@@ -339,28 +339,28 @@ public class BinaryTree {
         return reconPreOrder(queue);
     }
 
-    private BinaryTreeNode reconPreOrder(Queue<String> queue) {
+    private TreeNode reconPreOrder(Queue<String> queue) {
         String value = queue.poll();
         if (value.equals("#")){
             return null;
         }
         //序列化是中左右，反序列化也是
-        BinaryTreeNode node = new BinaryTreeNode(Integer.valueOf(value));
-        node.leftChild = reconPreOrder(queue);
-        node.rightChild = reconPreOrder(queue);
+        TreeNode node = new TreeNode(Integer.valueOf(value));
+        node.left = reconPreOrder(queue);
+        node.right = reconPreOrder(queue);
         return node;
     }
     //在二叉树中找到一个节点的后继节点[中序遍历的后一个结点],用最经济的方式，避免遍历整棵树
-    public BinaryTreeNode getSucessorNode(BinaryTreeNode node){
+    public TreeNode getSucessorNode(TreeNode node){
         if (node == null){
             return null;
         }
         //是否有右子树，有的话，就是右子树最左节点
-       if (node.rightChild != null){
-            return findMostLeft(node.rightChild);
+       if (node.right != null){
+            return findMostLeft(node.right);
        }else {
-           BinaryTreeNode parent = node.parent;
-           while (parent != null && node != parent.leftChild){
+           TreeNode parent = node.parent;
+           while (parent != null && node != parent.left){
                node = node.parent;
                parent = parent.parent;
            }
@@ -368,12 +368,12 @@ public class BinaryTree {
        }
         //没有右子树，则向上找
     }
-    private BinaryTreeNode findMostLeft(BinaryTreeNode node){
+    private TreeNode findMostLeft(TreeNode node){
         if (node == null){
             return null;
         }
-        while (node.leftChild != null){
-            node = node.leftChild;
+        while (node.left != null){
+            node = node.left;
         }
         return node;
     }

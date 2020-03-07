@@ -1,6 +1,6 @@
 package com.ustc.zuoshen.day04;
 
-import com.ustc.common.BinaryTreeNode;
+import com.ustc.common.TreeNode;
 
 /**
  * 打印结果中， HXH表示头结点 X，VYV表示 Y 是左下方最近结点的孩子；^Z^ 表示 Z 是左上方最近结点的孩子；
@@ -14,7 +14,7 @@ import com.ustc.common.BinaryTreeNode;
 public class PrintBinaryTree {
 
 
-    public static void printTree(BinaryTreeNode head) {
+    public static void printTree(TreeNode head) {
         System.out.println("Binary Tree:");
         printInOrder(head, 0, "H", 10);
         System.out.println();
@@ -26,12 +26,12 @@ public class PrintBinaryTree {
      * @param to       ：表示的特定节点  H表示根节点   ^表示父亲节点在左上方　v表示父亲节点在左下方
      * @param totalLength ：指定每一个节点打印的宽度(总宽度)
      */
-    public static void printInOrder(BinaryTreeNode head, int treeHeight, String to, int totalLength) {
+    public static void printInOrder(TreeNode head, int treeHeight, String to, int totalLength) {
         if (head == null) {
             return;
         }
         // 递归遍历右子树
-        printInOrder(head.rightChild, treeHeight + 1, "v", totalLength);
+        printInOrder(head.right, treeHeight + 1, "v", totalLength);
 
         // 在节点值两边加上标识符
         String val = to + head.val + to;
@@ -45,7 +45,7 @@ public class PrintBinaryTree {
         System.out.println(getSpace(treeHeight * totalLength) + val);
 
         // 递归遍历左子树
-        printInOrder(head.leftChild, treeHeight + 1, "^", totalLength);
+        printInOrder(head.left, treeHeight + 1, "^", totalLength);
     }
 
     public static String getSpace(int num) {
@@ -58,22 +58,22 @@ public class PrintBinaryTree {
     }
 
     public static void main(String[] args) {
-        BinaryTreeNode head = new BinaryTreeNode(1);
-        head.leftChild = new BinaryTreeNode(-22);
-        head.rightChild = new BinaryTreeNode(3);
-        head.leftChild.leftChild = new BinaryTreeNode(2);
-        head.rightChild.leftChild = new BinaryTreeNode(55);
-        head.rightChild.rightChild = new BinaryTreeNode(66);
-        head.leftChild.leftChild.rightChild = new BinaryTreeNode(7);
+        TreeNode head = new TreeNode(1);
+        head.left = new TreeNode(-22);
+        head.right = new TreeNode(3);
+        head.left.left = new TreeNode(2);
+        head.right.left = new TreeNode(55);
+        head.right.right = new TreeNode(66);
+        head.left.left.right = new TreeNode(7);
         printTree(head);
 
-        head = new BinaryTreeNode(1);
-        head.leftChild = new BinaryTreeNode(1);
-        head.rightChild = new BinaryTreeNode(1);
-        head.leftChild.leftChild = new BinaryTreeNode(1);
-        head.rightChild.leftChild = new BinaryTreeNode(1);
-        head.rightChild.rightChild = new BinaryTreeNode(1);
-        head.leftChild.leftChild.rightChild = new BinaryTreeNode(1);
+        head = new TreeNode(1);
+        head.left = new TreeNode(1);
+        head.right = new TreeNode(1);
+        head.left.left = new TreeNode(1);
+        head.right.left = new TreeNode(1);
+        head.right.right = new TreeNode(1);
+        head.left.left.right = new TreeNode(1);
         printTree(head);
     }
 }
