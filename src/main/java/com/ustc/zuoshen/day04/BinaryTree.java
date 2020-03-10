@@ -205,6 +205,9 @@ public class BinaryTree {
 
     /**
      * 判断是否为搜索/查找/排序二叉树
+     * 节点的左子树只包含小于当前节点的数。
+     * 节点的右子树只包含大于当前节点的数。
+     * 所有左子树和右子树自身必须也是二叉搜索树。
      * @param root
      * @return
      */
@@ -215,17 +218,17 @@ public class BinaryTree {
         }
         Stack<TreeNode> stack = new Stack<>();
         TreeNode p = root;
-        int pre = Integer.MIN_VALUE;
+        Integer pre = null;
         while (!stack.isEmpty() || p != null){
             if(p != null){
                 stack.push(p);
                 p = p.left;
             }else{
                 p = stack.pop();
-                if (p.val < pre){
+                if (pre != null && p.val < pre){
                     return false;
                 }
-                pre = p.val;
+                pre = new Integer(p.val);
               //  System.out.print(p.val + " ");
                 p = p.right;
             }
