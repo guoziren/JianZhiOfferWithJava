@@ -86,7 +86,8 @@ public class L540 {
         list.addAll(set);
         list.add(temp);
         Collections.sort(list);
-        return list.stream().mapToInt(Integer::valueOf).toArray();
+//        return list.stream().mapToInt(Integer::valueOf).toArray();
+        return null;
     }
     private int absoluteRight(int[] nums){
         int len = nums.length;

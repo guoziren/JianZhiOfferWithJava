@@ -72,7 +72,8 @@ public class L153 {
             int first = list.removeFirst();
             list.addLast(first);
         }
-        return list.stream().mapToInt(Integer::valueOf).toArray();
+//        return list.stream().mapToInt(Integer::valueOf).toArray();
+        return null;
     }
     public int absoluteRight(int[] nums){
         int min = Integer.MAX_VALUE;

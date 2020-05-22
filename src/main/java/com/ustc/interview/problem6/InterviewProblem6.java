@@ -2,6 +2,7 @@ package com.ustc.interview.problem6;
 
 import com.ustc.common.ListNode;
 
+import java.util.ArrayList;
 import java.util.Stack;
 
 /**
@@ -132,6 +133,16 @@ public class InterviewProblem6 {
             }
             System.out.println(pHead.val);
         }
+    }
+
+    //剑指offer 牛客网版本,递归版本
+    ArrayList<Integer> arrayList=new ArrayList<Integer>();
+    public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
+        if(listNode!=null){
+            this.printListFromTailToHead(listNode.next);
+            arrayList.add(listNode.val);
+        }
+        return arrayList;
     }
 
 }

@@ -1,5 +1,10 @@
 package com.ustc.leetcode.datastrcture.tree;
+import com.ustc.common.TreeNode;
 import org.junit.Test;
+
+import java.lang.ref.SoftReference;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class CommonTest {
     @Test
@@ -29,5 +34,24 @@ public class CommonTest {
         System.out.println((int)eee);
 
     }
+
+    @Test
+    public void test2(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("abc");
+        change(sb);
+        System.out.println(sb);
+    }
+    public void change(StringBuilder s){
+        s = null;
+    }
+    int count = 0;
+    @Test
+    public void test3(){
+       count++;
+        System.out.println(count);
+        SoftReference s ;
+    }
+
 
 }

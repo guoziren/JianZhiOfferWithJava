@@ -3,7 +3,6 @@ package com.ustc.leetcode.datastrcture.stack_queue;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-import static jdk.nashorn.internal.objects.NativeString.match;
 
 /**
  * 20. 有效的括号

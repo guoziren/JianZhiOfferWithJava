@@ -78,6 +78,7 @@ public class Code_14_FindFirstIntersectionNode {
         fast = head;
         while (fast != slow){
             fast = fast.next;
+            slow = slow.next;
         }
         return fast;
     }
