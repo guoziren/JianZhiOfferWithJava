@@ -105,6 +105,17 @@ public class BinaryTree {
 
         return constructCore(preorder,inorder,0, length - 1,0,length - 1);
     }
+
+    /**
+     *
+     * @param preorder 先序序列数组
+     * @param inorder 中序序列数组
+     * @param startPreorder 先序数组起始位置
+     * @param endPreorder 先序数组结束位置
+     * @param startInorder 中序数组起始位置
+     * @param endInorder 中序数组结束位置
+     * @return 构造的二叉树的根节点
+     */
     public TreeNode constructCore(int[] preorder, int[] inorder, int startPreorder, int endPreorder, int startInorder, int endInorder){
         int rootValue = preorder[startPreorder];
         TreeNode root = new TreeNode(rootValue);
@@ -116,14 +127,14 @@ public class BinaryTree {
             rootInorder++;
         }
 
-        int leftLength = rootInorder -startInorder;
+        int leftLength = rootInorder -startInorder; //左子树结点个数
         int leftPreorderEnd = startPreorder + leftLength;
-        if (leftLength > 0){
+        if (leftLength > 0){ //存在左子树 构建左子树
             //构建左子树
             root.left = constructCore(preorder,inorder,startPreorder + 1,leftPreorderEnd,
                     startInorder,rootInorder - 1);
         }
-        if (leftLength < endPreorder - startPreorder){
+        if (leftLength < endPreorder - startPreorder){//左子树结点数 < 树的结点树 即存在右子树，构建右子树
             //构建右子树
             root.right = constructCore(preorder,inorder,leftPreorderEnd + 1,endPreorder,
                     rootInorder + 1,endInorder);
@@ -325,16 +336,16 @@ public class BinaryTree {
     //二叉树的序列化【先序】
     public String serialByPre(TreeNode root){
         if (root == null){
-            return "#!";
+            return "#,";
         }
-        String res = root.val + "!";
+        String res = root.val + "，";
         res+= serialByPre(root.left);
         res+= serialByPre(root.right);
         return res;
     }
     //二叉树的反序列化【先序】
-    public TreeNode reconByPreString(String preStr){
-        String[] values = preStr.split("!");
+    public TreeNode reconByPreString(String data){
+        String[] values = data.split(",");
         Queue<String> queue = new LinkedList<String>();
         for (int i = 0; i < values.length; i++) {
             queue.offer(values[i]);

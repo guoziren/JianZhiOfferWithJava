@@ -6,7 +6,7 @@ import java.util.LinkedList;
 /**
  * 面试题30：包含min元素的栈
  */
-public class InterviewProblem30 {
+public class JZ30 {
     private LinkedList<Integer> stack1 = new LinkedList<>();
     private LinkedList<Integer> stack2 = new LinkedList<>();
     public void push(int node) {
