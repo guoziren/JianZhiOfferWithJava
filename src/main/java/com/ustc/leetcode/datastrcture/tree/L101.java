@@ -21,6 +21,12 @@ public class L101 {
         return isChildSymmetric(root.left,root.right);
     }
 
+    /**
+     * 先序 与 对称的先序 比较
+     * @param left
+     * @param right
+     * @return
+     */
     private boolean isChildSymmetric(TreeNode left, TreeNode right) {
         if (left == null && right == null){
             return true;
