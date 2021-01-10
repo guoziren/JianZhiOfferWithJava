@@ -5,6 +5,9 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
+/**
+ * 两数之和
+ */
 public class L1 {
     @Test
     public void test(){
@@ -28,6 +31,14 @@ public class L1 {
                 }
             }
         }
+        return null;
+    }
+
+    /**
+     * 方法二：哈希表法   时间复杂度O(n) 空间复杂度O(n)
+     * @return
+     */
+    public int[] twoSum(){
         return null;
     }
 }

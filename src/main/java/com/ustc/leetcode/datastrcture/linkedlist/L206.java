@@ -39,7 +39,7 @@ public class L206 {
      */
     public static ListNode reverseList2(ListNode head) {
         if (head == null || head.next == null){
-            return null;
+            return head;
         }
         ListNode p = reverseList2(head.next);
         head.next.next = head;
