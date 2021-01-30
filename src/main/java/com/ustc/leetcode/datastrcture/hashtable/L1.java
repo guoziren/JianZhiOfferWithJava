@@ -1,6 +1,5 @@
 package com.ustc.leetcode.datastrcture.hashtable;
 
-import com.sun.tools.javac.util.List;
 import org.junit.Test;
 
 import java.util.Arrays;

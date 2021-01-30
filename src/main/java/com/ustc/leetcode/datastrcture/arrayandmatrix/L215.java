@@ -2,7 +2,6 @@ package com.ustc.leetcode.datastrcture.arrayandmatrix;
 
 import org.junit.Test;
 
-import static com.sun.tools.javac.jvm.ByteCodes.swap;
 
 /**
  * 215. 数组中的第K个最大元素
