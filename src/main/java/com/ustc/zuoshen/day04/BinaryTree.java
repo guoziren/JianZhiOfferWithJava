@@ -92,7 +92,7 @@ public class BinaryTree {
 
 
     /**
-     * 根据先序和中序遍历构造一颗二叉树
+     * 根据先序和中序遍历构造一颗二叉树 L105
      * @param preorder
      * @param inorder
      * @param length
