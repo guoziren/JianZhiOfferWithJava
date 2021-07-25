@@ -56,6 +56,7 @@ public class Code_14_FindFirstIntersectionNode {
 
      //1)如何判断单链表有环?法二
     /**
+     * leetcode L142 https://leetcode-cn.com/problems/linked-list-cycle-ii/
      * 不用哈希表（很玄学，这里有个结论）额外空间复杂度O(1)
      * 从给定链表中返回第一个入环节点
      * @param head 链表头结点
