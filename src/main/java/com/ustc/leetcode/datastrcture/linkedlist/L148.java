@@ -65,6 +65,8 @@ public class L148 {
             node = node.next;
         }
         ListNode dummyHead = new ListNode(0, head);
+        // 字长度从1 -> 2 -> 4 -> 8递增
+        // 找到要合并的2个链表的头结点，尾节点要置空
         for (int subLength = 1; subLength < length; subLength <<= 1) {
             ListNode prev = dummyHead, curr = dummyHead.next;
             while (curr != null) {
