@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * 两个数组的交集 II
+ * https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/x2y0c2/
+ */
 public class ArrayJunior1 {
     public int[] intersect(int[] nums1, int[] nums2) {
         Arrays.sort(nums1);
