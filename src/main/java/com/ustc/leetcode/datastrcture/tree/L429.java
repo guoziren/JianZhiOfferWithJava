@@ -1,7 +1,5 @@
 package com.ustc.leetcode.datastrcture.tree;
 
-
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,11 +10,14 @@ import java.util.Queue;
  * 429. N 叉树的层序遍历
  */
 public class L429 {
+
     static class Node {
+
         public int val;
         public List<Node> children;
 
-        public Node() {}
+        public Node() {
+        }
 
         public Node(int _val) {
             val = _val;
@@ -26,7 +27,9 @@ public class L429 {
             val = _val;
             children = _children;
         }
-    };
+    }
+
+    ;
 
     public List<List<Integer>> levelOrder(Node root) {
         List<List<Integer>> result = new ArrayList<>();
