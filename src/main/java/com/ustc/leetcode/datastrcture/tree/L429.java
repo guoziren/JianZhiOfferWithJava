@@ -35,19 +35,28 @@ public class L429 {
         }
         Queue<Node> queue = new LinkedList<>();
         queue.offer(root);
-
         int currentLevel = 1;
-        int currentNum = 1;
+        int currentLevelNum = 1;
+        int nextLevelNum = 0;
+        List<Integer> currentLevelList = new ArrayList<>();
         while (!queue.isEmpty()) {
             Node parent = queue.poll();
-            currentNum--;
-
+            currentLevelList.add(parent.val);
             if (parent.children != null) {
                 for (Node child : parent.children) {
                     if (child != null) {
                         queue.offer(child);
+                        nextLevelNum++;
                     }
                 }
+            }
+            currentLevelNum--;
+            if (currentLevelNum == 0) {
+                currentLevel++;
+                currentLevelNum = nextLevelNum;
+                nextLevelNum = 0;
+                result.add(currentLevelList);
+                currentLevelList = new ArrayList<>();
             }
         }
         return result;
